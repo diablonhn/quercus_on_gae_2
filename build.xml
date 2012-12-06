@@ -46,7 +46,13 @@
 
   <target name="runserver" depends="datanucleusenhance"
       description="Starts the development server.">
-    <dev_appserver war="war" />
+    <dev_appserver war="war">
+      <options>
+        <arg value="--jvm_flag=-Drdbms.server=local"/>
+        <arg value="--jvm_flag=-Drdbms.driver=com.mysql.jdbc.Driver"/>
+        <arg value="--jvm_flag=-Drdbms.url=jdbc:mysql://127.0.0.1:3306/wordpress0?user=root"/>
+      </options>
+    </dev_appserver>
   </target>
 
   <target name="update" depends="datanucleusenhance"
